@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍅</text></svg>">
+</head>
+<body>
+  <div class="app-container">
+    <div class="glass-card">
+      <!-- Session Indicator -->
+      <div class="session-indicator">
+        <div class="session-dot active" data-session="work"></div>
+        <div class="session-dot" data-session="shortBreak"></div>
+        <div class="session-dot" data-session="longBreak"></div>
+        <div class="session-dot" data-session="longBreak"></div>
+      </div>
+
+      <!-- Timer Display -->
+      <div class="timer-display">
+        <div class="session-label" id="sessionLabel">Work</div>
+        <div class="timer-circle work" id="timerCircle">
+          <svg viewBox="0 0 300 300">
+            <circle class="progress-ring-bg" cx="150" cy="150" r="130"></circle>
+            <circle class="progress-ring" id="progressRing" cx="150" cy="150" r="130"></circle>
+          </svg>
+          <div class="timer-time" id="timerTime">25:00</div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="btn btn-icon" id="resetBtn" title="Reset">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+        </button>
+        <button class="btn btn-primary" id="startPauseBtn">
+          <svg id="playIcon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5,3 19,12 5,21"></polygon>
+          </svg>
+          <svg id="pauseIcon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="display:none">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+          <span id="startPauseText">Start</span>
+        </button>
+        <button class="btn btn-icon" id="skipBtn" title="Skip">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5,3 15,12 5,21"></polygon>
+            <rect x="15" y="3" width="4" height="18"></rect>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Settings Panel -->
+      <div class="settings-panel">
+        <div class="settings-header" id="settingsHeader">
+          <h3>Settings</h3>
+          <div class="settings-toggle" id="settingsToggle">▼</div>
+        </div>
+        <div class="settings-content" id="settingsContent">
+          <div class="setting-item">
+            <span class="setting-label">Work (minutes)</span>
+            <input type="number" class="setting-input" id="workDuration" min="1" max="60" value="25">
+          </div>
+          <div class="setting-item">
+            <span class="setting-label">Short Break (minutes)</span>
+            <input type="number" class="setting-input" id="shortBreakDuration" min="1" max="30" value="5">
+          </div>
+          <div class="setting-item">
+            <span class="setting-label">Long Break (minutes)</span>
+            <input type="number" class="setting-input" id="longBreakDuration" min="1" max="60" value="15">
+          </div>
+        </div>
+      </div>
+
+      <!-- Session Counter -->
+      <div class="session-counter">
+        Sessions completed: <span id="sessionCount">0</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
